@@ -15,8 +15,9 @@ heap = []
 cost = 0
 seen = set()
 heappush(heap, (0, 0))
+count = 0
 
-for _ in range(n):
+while heap:
     v, w = heappop(heap)
     if v in seen:
         continue
@@ -25,6 +26,9 @@ for _ in range(n):
     
     for node, j in g[v]:
         heappush(heap, (node, j))
+    count += 1
+    if count == n:
+        break
 print(cost)
 
 
@@ -34,7 +38,7 @@ n = 4
 edges = [[],[],[]]   # edge list
 parent = list(range(n))
 costs = 0
-
+count = 0
 def find(x):
     if x != parent(x):
         parent(x) = find(parent(x))
@@ -43,13 +47,12 @@ def find(x):
 for start, end, cost in sorted(edges, key= lambda x: x[2]):
     hs = find(start)
     he = find(end)
-    
     if hs == he: continue
-    
     parent[hs] = he
-
     costs += cost
-    
+    count += 1
+    if count == n-1:
+        break
 print(costs)
 
 
