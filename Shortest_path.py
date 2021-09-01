@@ -23,7 +23,6 @@ def Dijkstra(Edges, vi):
     
     while len(seen) != n:  
         w, node = heapq.heappop(heap)
-        if node in seen: continue
         seen.add(node)
         for weight, neighbor in Edges[node]:
             if neighbor not in seen:
@@ -33,9 +32,26 @@ def Dijkstra(Edges, vi):
                     heapq.heappush(heap, (w + weight, neighbor))
     return distance
 
+def OriginalBellmanFord(edges, vi, n):                      # edge list
+    dist = [float(inf) for i in range(n)]
+    predecessor = [i for i in range(n)]
+    dist[vi] = 0                             # be careful here, the vi is indexed from 0
+
+    # the algorithm can be improved to loop at most n - 1 times by comparing old and new distance in each iteration, if it's 0, then break
+    for _ in range(n - 1): 
+        tmp = [float(inf)]*n
+        tmp[vi] = 0
+        for weight, source, target in edges:
+            if weight + dist[source] < tmp[target]:
+                tmp[target] = weight + dist[source]
+                predecessor[target] = source
+        dist[:] = tmp
+    # to detect negative cycle, do one more iteration, if any distance decrease, then the negative cycle exist
+    return dist, predecessor
 
 
-def BellmanFord(edges, vi, n):                      # edge list
+
+def ImporvedBellmanFord(edges, vi, n):                      # edge list
     dist = [float(inf) for i in range(n)]
     predecessor = [i for i in range(n)]
     dist[vi] = 0                             # be careful here, the vi is indexed from 0
