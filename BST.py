@@ -211,4 +211,89 @@ def PredecessorIterative(root, p):
             
         
             
+# delete node in BST 
+
+class Solution:
+    "Iterative method"
+    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:     
+        if not root:
+            return None   
+        parent, cur = None, root
+        while cur and cur.val != key:
+            parent = cur
+            if cur.val > key:
+                cur = cur.left
+            else:
+                cur = cur.right       
+        if not cur:
+            return root
+        if not cur.left and not cur.right:
+            if cur != root:
+                if parent.val < key:
+                    parent.right = None
+                    return root
+                else:
+                    parent.left = None
+                    return root
+            else:
+                root = None
+                return root  
+        elif cur.left and cur.right:
+            tmp = cur
+            rightmost = cur.left
+            while rightmost.right:
+                tmp = rightmost
+                rightmost = rightmost.right
+            cur.val = rightmost.val          
+            if tmp != cur:
+                tmp.right = rightmost.left
+            else:
+                tmp.left = rightmost.left
+            return root
+        else:
+            if cur.left:
+                child = cur.left
+            else:
+                child = cur.right          
+            if cur == root:
+                root = child
+            else:
+                if cur == parent.left:
+                    parent.left = child
+                else:
+                    parent.right = child                   
+            return root
+
+class Solution:
+    "Recursion method"
+    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         
+        if not root:
+            return None     
+        else:
+            if root.val == key:
+                root = self.delete(root)
+            elif root.val < key:
+                root.right = self.deleteNode(root.right, key)
+            else:
+                root.left = self.deleteNode(root.left, key)
+        return root
+    
+    def delete(self, node):
+        
+        if not node.left:
+            return node.right
+        elif not node.right:
+            return node.left    
+        else:
+            tmp = node
+            rightmost = node.left
+            while rightmost.right:
+                tmp = rightmost
+                rightmost = rightmost.right
+            node.val = rightmost.val          
+            if tmp != node:
+                tmp.right = rightmost.left
+            else:
+                tmp.left = rightmost.left
+            return node
