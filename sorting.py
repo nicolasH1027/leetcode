@@ -21,6 +21,7 @@ def partition(data, p, r):
 # with randomization
 
 import random
+from typing import Collection
 
 def quicksort(data, p, r):
     if p < r:
@@ -40,3 +41,67 @@ def partition(data, p, r):
     
     data[i+1], data[r] = data[r], data[i+1]
     return i+1  
+
+# merge and sort 
+
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        
+        if len(nums) == 1:
+            return nums
+        
+        pivot =  len(nums) // 2
+        
+        leftpart = self.sortArray(nums[0:pivot])
+        rightpart = self.sortArray(nums[pivot:])
+        
+        return self.merge(leftpart, rightpart)
+    
+    def merge(self, left, right):
+        
+        res = []
+        lpt = 0
+        rpt = 0
+        
+        m = len(left)
+        n = len(right)
+        
+        while lpt < m and rpt < n:
+            if left[lpt] < right[rpt]:
+                res.append(left[lpt])
+                lpt += 1
+            else:
+                res.append(right[rpt])
+                rpt += 1
+        res.extend(left[lpt:])
+        res.extend(right[rpt:])
+        
+        return res
+        
+        
+# bubble sort 
+
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        
+        for i in range(len(nums)-1, 0, -1):
+            for j in range(i):
+                if nums[j] > nums[j + 1]:
+                    nums[j], nums[j+1] = nums[j+1], nums[j]
+
+        return nums
+    
+    
+# heap sort 
+
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        
+        heapq.heapify(nums)
+        
+        result = []
+        
+        for _ in range(len(nums)):
+            result.append(heapq.heappop(nums))
+            
+        return result
