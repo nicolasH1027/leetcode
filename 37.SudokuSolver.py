@@ -34,7 +34,7 @@ class Solution:
             
             if r == 8 and c == 9:              # already fill out all the empty cell
                 return True
-            elif r == 9:                       # reach the last element of one row, so we jump into the first element in next row
+            elif c == 9:                       # reach the last element of one row, so we jump into the first element in next row
                 return backtrack(r+1, 0)
             else:
                 if board[r][c] != '.':         # reach the seen element, so we jump to the next cell
@@ -44,18 +44,18 @@ class Solution:
                         if not valid(r, c, i):
                             continue
                         place(r, c, i)
-                         # if the next cell return true, then we dont need to remove the value that insert in the current run, so we return true
+                        # if the next cell return true, then we dont need to remove the value that insert in the current run, so we return true
                         #  however, if the next backtrack return False, that means the current input is invalid, so we need to remove
-                        if backtrack(r, c+1): 
+                        if backtrack(r, c+1):
                             return True
                         remove(r, c, i)
-                    # return False
+                    return False
         
         for i in range(9):
             for j in range(9):
                 if board[i][j] != '.':
-                    place(r, c, int(board[i][j]))
-                        
+                    place(i, j, int(board[i][j]))
+                    
         backtrack(0, 0)
                 
             
