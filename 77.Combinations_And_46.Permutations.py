@@ -1,13 +1,19 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        return
-
-
-
-
-
-
-
+        
+        self.result = []
+        self.comb = []
+        
+        def backtrack(start , k):
+            if len(self.comb) == k:
+                self.result.append(self.comb[:])
+            
+            for i in range(start, n+1):
+                self.comb.append(i)
+                backtrack(start+1, k)
+                self.comb.pop()
+        backtrack(1, k)
+        return 
 
 
 
