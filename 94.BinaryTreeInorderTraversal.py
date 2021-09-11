@@ -23,7 +23,7 @@ class Solution:
             while root.left:
                 root = root.left
                 stack.append(root)    
-            cur = stack.pop()
+            cur = stack.pop()          # be careful here, the cur and root are linked to the same node, so dont change the cur 
             result.append(cur.val)    
             if cur.right:
                 root = cur.right
