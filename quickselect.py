@@ -10,7 +10,7 @@ def quickselect(data, p, r, k):
     tmp = partition(data, p, r, pivot)
     
     if tmp == len(data) - k: return data[tmp]
-    elif tmp < k:
+    elif tmp < len(data) - k:
         return  quickselect(data, tmp+1, r, k)
     else:
         return quickselect(data, p, tmp-1, k)
