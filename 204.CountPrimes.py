@@ -1,5 +1,6 @@
 class Solution:
     def countPrimes(self, n: int) -> int:
+        "nlog(logn)"
         if n <= 2:
             return 0
         seen = set()
