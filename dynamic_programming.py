@@ -31,7 +31,7 @@ def MaxValueCutIte(n, price):
         q = float(-inf)
         for i in range(1, j + 1):
             q = max(q, revenue[j - i])
-        r[j] = q
+        revenue[j] = q
     
     return revenue
 
