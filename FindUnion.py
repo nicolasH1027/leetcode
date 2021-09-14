@@ -20,7 +20,7 @@ class UnionFindSet:
   
     def union(self, u, v):
         pu, pv = self.find(u), self.find(v)
-        if pu == pv: return False
+        if pu == pv: return None
         
         if self._ranks[pu] < self._ranks[pv]:
             self._parents[pu] = pv

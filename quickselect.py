@@ -3,26 +3,26 @@
 # for repated value, use the hash table firstly
 import random
 
-def quickselect(data, p, r, k):
-    if p == r:
-        return data[p]
-    pivot = random.randrange(p,r+1)
-    tmp = partition(data, p, r, pivot)
+def quickselect(data, l, r, k):
+    if l == r:
+        return data[l]
+    pivot = random.randint(l,r)
+    tmp = partition(data, l, r, pivot)
     
     if tmp == len(data) - k: return data[tmp]
     elif tmp < len(data) - k:
         return  quickselect(data, tmp+1, r, k)
     else:
-        return quickselect(data, p, tmp-1, k)
+        return quickselect(data, l, tmp-1, k)
         
     
 
-def partition(data, p, r, pivot):
+def partition(data, l, r, pivot):
     
     data[r], data[pivot] = data[pivot], data[r]
     x = data[r]
-    i = p - 1
-    for j in range(p, r):
+    i = l - 1
+    for j in range(l, r):
         if data[j] <= x:
             i = i + 1
             data[i], data[j] = data[j], data[i]

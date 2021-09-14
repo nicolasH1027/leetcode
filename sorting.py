@@ -24,6 +24,7 @@ import random
 from typing import Collection
 
 def quicksort(data, p, r):
+    "O(nlog(n)), inplace"
     if p < r:
         q = partition(data, p, r)
         quicksort(data, p, q - 1)
@@ -46,7 +47,7 @@ def partition(data, p, r):
 
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
-        
+        "O(nlog(n))"
         if len(nums) == 1:
             return nums
         
@@ -83,7 +84,7 @@ class Solution:
 
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
-        
+        "O(n^2)"
         for i in range(len(nums)-1, 0, -1):
             for j in range(i):
                 if nums[j] > nums[j + 1]:
@@ -96,7 +97,7 @@ class Solution:
 
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
-        
+        "O(nlog(n))"
         heapq.heapify(nums)
         
         result = []
@@ -104,4 +105,15 @@ class Solution:
         for _ in range(len(nums)):
             result.append(heapq.heappop(nums))
             
+        return result
+    
+# insertion sort
+
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        "O(n^2)"
+        result = []
+        for item in nums:
+            bisect.insort_left(result, item)
+        
         return result
