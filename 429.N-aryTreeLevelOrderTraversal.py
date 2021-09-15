@@ -14,7 +14,6 @@ class Solution:
         def BFS(root, level):
             if len(result) == level:
                 result.append([])
-            
             result[level].append(root.val)
             for child in root.children:
                 BFS(child, level+1)
