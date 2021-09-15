@@ -32,7 +32,7 @@ class Solution:
                         
             
         
-        
+
 class Solution:
     "Recursion Version"    
     def levelOrder(self, root):
