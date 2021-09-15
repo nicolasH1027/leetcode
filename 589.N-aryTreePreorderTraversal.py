@@ -19,7 +19,8 @@ class Solution:
         return dfs(root)
     
 class Solution:
-    def preorder(self, root: 'Node') -> List[int]:  
+    def preorder(self, root: 'Node') -> List[int]: 
+        "Recursion Version, more efficient one" 
         def helper(root):
             if not root:
                 return
