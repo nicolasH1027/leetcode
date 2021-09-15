@@ -17,16 +17,49 @@ class Solution:
                 cur += dfs(child)
             return cur
         return dfs(root)
+    
+class Solution:
+    def preorder(self, root: 'Node') -> List[int]:  
+        def helper(root):
+            if not root:
+                return
+            result.append(root.val)
+            for child in root.children:
+                helper(child)
+        result = []
+        helper(root)
+        return result
 
 class Solution:
     def preorder(self, root: 'Node') -> List[int]:
-        "Iterative Version"
         if not root:
             return []
-        stack = [root]
         result = []
+        stack = [root]
         while stack:
             cur = stack.pop()
             result.append(cur.val)
-            stack.extend(cur.children[::-1]) # be careful the order here
+            for i in range(len(cur.children) - 1, -1, -1):
+                stack.append(cur.children[i])
         return result
+        
+    
+    
+    
+    
+    
+    
+
+
+# class Solution:
+#     def preorder(self, root: 'Node') -> List[int]:
+#         "Iterative Version, not efficient"
+#         if not root:
+#             return []
+#         stack = [root]
+#         result = []
+#         while stack:
+#             cur = stack.pop()
+#             result.append(cur.val)
+#             stack.extend(cur.children[::-1]) # be careful the order here
+#         return result
