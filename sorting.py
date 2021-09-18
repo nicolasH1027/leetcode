@@ -117,3 +117,44 @@ class Solution:
             bisect.insort_left(result, item)
         
         return result
+    
+    
+# counting sort
+# the array is required to be array of inter and we knoe the maximum value
+
+def countsort(nums):
+    "O(3*N)only works for positive number, not stable"
+    MAX = max(nums)
+    MIN = min(nums) 
+    count = [0]*(MAX - MIN + 1)
+    for item in nums:
+        count[item - MIN] += 1
+    ind = 0
+    for i in range(len(count)):
+        while count[i] > 0:
+            nums[ind] = i + MIN
+            ind += 1
+            count[i] -= 1
+    return nums
+
+def countsort(nums):
+    "O(N), works for negative number, stable"
+    MAX = max(nums)
+    MIN = min(nums)
+    count = [0]*(MAX - MIN + 1)
+    
+    for item in nums:
+        count[item - MIN] += 1
+
+    for i in range(1, len(count)):
+        count[i] = count[i] + count[i-1]
+
+    tmp = [0]*len(nums)
+    
+    for i in range(len(nums) - 1, -1, -1):
+        pos = nums[i] - MIN
+        sumCount = count[pos]
+        
+        tmp[sumCount - 1] = nums[i]
+        count[pos] -= 1
+    return tmp
