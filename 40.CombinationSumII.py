@@ -6,7 +6,7 @@ class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         "using index and sorting"
         def backtracking(target, start, ls):         # each depth can be treated as the position
-            if target == 0:                          
+            if target == 0:                          # we allow each position to use the same number only once !!!
                 result.append(ls[:])
                 return
             if target < 0:
