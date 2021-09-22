@@ -23,7 +23,7 @@ class Solution:
                 return res
             if k == 2:
                 return twosum(nums, target)
-            for i in range(len(nums) - k):
+            for i in range(len(nums) - k + 1):
                 if i and nums[i] == nums[i - 1]: continue
                 for item in ksum(nums[i+1:], target - nums[i], k-1):
                     res.append([nums[i]] + item)
