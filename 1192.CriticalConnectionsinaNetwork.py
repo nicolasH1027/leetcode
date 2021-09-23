@@ -69,6 +69,8 @@ class Solution:
         for i, j in conlink:
             result.append([i, j])
         return result
+    
+"how to find the Articulation Points ?"
                 
                 
                 
