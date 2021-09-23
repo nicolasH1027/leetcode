@@ -31,3 +31,8 @@ class UnionFindSet:
             self._ranks[pu] += 1
         
         return True
+    
+    def handy_find(self, u):
+        if u != self._parents[u]:
+            self._parents[u] = self.handy_find(self._parents[u])
+        return self._parents[u]
