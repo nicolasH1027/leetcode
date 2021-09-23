@@ -7,13 +7,13 @@ class Solution:
         def backtrack(start , k):
             if len(self.comb) == k:
                 self.result.append(self.comb[:])
-            
+                return
             for i in range(start, n+1):
                 self.comb.append(i)
                 backtrack(start+1, k)
                 self.comb.pop()
         backtrack(1, k)
-        return 
+        return self.result
 
 
 
