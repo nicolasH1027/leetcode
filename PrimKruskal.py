@@ -25,7 +25,7 @@ while heap:
     cost += w
     
     for node, j in g[v]:
-        heappush(heap, (node, j))
+        heappush(heap, (j, node))             # here, sorted by the first element
     count += 1
     if count == n:
         break
