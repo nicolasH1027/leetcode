@@ -1,6 +1,10 @@
 class Solution:
     def smallestStringWithSwaps(self, s: str, pairs: List[List[int]]) -> str:
-        
+        """
+        n = len(s)
+        v = len(pairs)
+        O(nlog(n) + v)
+        """
         parent = [i for i in range(len(s))]
         rank = [1 for i in range(len(s))]
         
