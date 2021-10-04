@@ -19,12 +19,13 @@ count = 0
 
 while heap:
     v, w = heappop(heap)
-    if v in seen:
+    if w in seen:
         continue
-    seen.add(v)
-    cost += w
+    seen.add(w)
+    cost += v
     
     for node, j in g[v]:
+        if node in seen: continue
         heappush(heap, (j, node))             # here, sorted by the first element
     count += 1
     if count == n:

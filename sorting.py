@@ -158,3 +158,7 @@ def countsort(nums):
         tmp[sumCount - 1] = nums[i]
         count[pos] -= 1
     return tmp
+
+# bucket sort
+
+# buckey = ( max - min )/ (len +　１)

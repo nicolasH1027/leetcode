@@ -26,6 +26,7 @@ def Dijkstra(Edges, vi):
         seen.add(node)
         for weight, neighbor in Edges[node]:
             if neighbor not in seen:
+                # D[k][u] = min(D[k][u], D[k-1][v] + W(v, u))
                 if w + weight < distance[neighbor]:
                     distance[neighbor] = w + weight
                     parent[neighbor] = node
@@ -58,10 +59,14 @@ def ImporvedBellmanFord(edges, vi, n):                      # edge list
 
     # the algorithm can be improved to loop at most n - 1 times by comparing old and new distance in each iteration, if it's 0, then break
     for _ in range(n - 1):    
+        flag = False # to exist the loop early
         for weight, source, target in edges:
             if weight + dist[source] < dist[target]:
+                flag = True
                 dist[target] = weight + dist[source]
                 predecessor[target] = source
+        if not flag:
+            break
     # to detect negative cycle, do one more iteration, if any distance decrease, then the negative cycle exist
     return dist, predecessor
         
@@ -78,11 +83,11 @@ def SPFA(edges, vi, n):
     
     while queue:
         current = queue.popleft()
-        for weight, neighbor in edges[vi]:
+        for weight, neighbor in edges[current]:
             if weight + dist[current] < dist[neighbor]:
                 predecessor[neighbor] = current
                 dist[neighbor] = weight + dist[current]
-                if neighbor not in queue:
+                if neighbor not in queue: # here, the operation is O(v), which will increase the time complexity, so we might need to use set instead
                     queue.append(neighbor)
     
     return dist, predecessor
@@ -101,8 +106,7 @@ def FloydWarshall(edges, n):
     for i in range(n):
         dist[i][i] = 0
         Successor[v][v] = v
-        
-    
+
     
     for k in range(n):
         for i in range(n):
