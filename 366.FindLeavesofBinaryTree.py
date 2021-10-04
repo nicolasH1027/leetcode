@@ -10,6 +10,11 @@ class Solution:
         def dfs(root):
             """
             O(N), N means the number of nodes
+            The essential of problem is not to find the leaves, 
+            but group leaves of same level together and also to cut the tree. 
+            This is the exact role backtracking plays. 
+            The dfs function returns the level which is the distance from its furthest subtree leaf to root,
+            which helps to identify which group the root belongs to
             """
             # reach the leaf 
             if not root:
