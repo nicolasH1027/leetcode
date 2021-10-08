@@ -7,7 +7,7 @@ class Solution:
             """
             (X + Y) % k == 0  ==> x % k == -Y % k 
             """
-            if rem[-val % k]:
+            if rem[-val % k] and rem[-val % k] >= 1:
                 count += 2
                 rem[-val % k] -= 1
             else:
