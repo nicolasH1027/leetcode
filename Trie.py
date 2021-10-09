@@ -88,12 +88,12 @@ tire = {}
 for word in words:
     node = tire
     for letter in word:
-        node = tire.setdefault(letter, {})
+        node = node.setdefault(letter, {})
     node[end] = end
     
 node = tire
 for letter in prefix:
-    if letter not in tire:
+    if letter not in node:
         return False
     node = tire[letter]
 return end in node
