@@ -34,7 +34,7 @@ class Solution:
                 if s[start:tar] in word and backtrack(s, word, start + 1):
                     return True
             return False
-        return backtrack(s,tuple(wordDict), 0)
+        return backtrack(s,frozenset(wordDict), 0)
     
 
 class Solution:
