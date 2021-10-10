@@ -60,4 +60,8 @@ class Solution:
                 cur = stack.pop()
                 cur = cur.right
         return result
-        
+
+
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        "Morris traversal O(1) memory complexity"

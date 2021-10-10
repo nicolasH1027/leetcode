@@ -42,6 +42,14 @@ class Solution:
                 result.append(cur.val)
                 cur = cur.right
         return result
+
+
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        "Morris traversal O(1) memory complexity"
+
+    
+    
     
     
 class Solution:

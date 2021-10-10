@@ -46,3 +46,7 @@ class Solution:
                 else:
                     cur = node.right
         return result
+
+class Solution:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        "Morris traversal O(1) memory complexity"
