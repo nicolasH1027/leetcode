@@ -1,4 +1,10 @@
 -- # Write your MySQL query statement below
+
+"""
+to return Null, we can use another select to wrap the original, then
+
+we can print the null explicitly
+"""
 SELECT
     (
     SELECT
