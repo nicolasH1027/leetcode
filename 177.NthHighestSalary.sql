@@ -1,0 +1,17 @@
+CREATE FUNCTION getNthHighestSalary(N INT) 
+RETURNS INT
+BEGIN
+DECLARE M INT;
+SET M = N - 1;
+    RETURN (
+        SELECT DISTINCT Salary FROM Employee ORDER BY Salary DESC LIMIT 1 OFFSET M
+    );
+END
+
+CREATE FUNCTION getNthHighestSalary(N INT) 
+RETURNS INT
+BEGIN
+    RETURN (
+        SELECT DISTINCT Salary FROM (SELECT * ,DENSE_RANK() OVER(ORDER BY Salary DESC) AS ranking FROM Employee) AS T WHERE ranking = N
+    );
+END
