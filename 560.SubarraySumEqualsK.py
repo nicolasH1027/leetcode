@@ -22,7 +22,10 @@ class Solution:
         4->7
         Hence, 3 sub arrays of sums=k
         This clarified some confusions I had while doing this problem.
-                
+
+        
+        1 2 1 3 -2 1 1 -3 3 3
+        1 3 4 7 5  6 7  4 7 10
         """
         
         seen = {0: 1}
