@@ -12,4 +12,26 @@ class Solution:
                 if i - seen[cur] > 1:
                     return True               
         return False
+
+
+class Solution(object):
+    def checkSubarraySum(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: bool
+        """
         
+        seen = {0: -1}
+        cusum = 0
+        
+        for i in range(len(nums)):
+            cusum = (cusum + nums[i]) % k
+            if cusum in seen:
+                if i - seen[cusum] > 1:
+                    return True
+                else:
+                    continue
+            seen[cusum] = i
+            
+        return False
