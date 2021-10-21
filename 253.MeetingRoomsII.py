@@ -35,3 +35,38 @@ class Solution(object):
             heapq.heappush(heap, intervals[i][1])
         
         return len(heap)
+    
+"""
+TWO pointer if we dont want to use priority queue
+"""
+
+class Solution(object):
+    def minMeetingRooms(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: int
+        """
+        
+        if not intervals:
+            return 0
+        
+        start = [x[0] for x in sorted(intervals, key=lambda x: x[0])]  # nlogn
+        end = [x[1] for x in sorted(intervals, key=lambda x: x[1])]
+        
+        cnt = 0
+        res = 0
+        i, j = 0, 0
+        
+        while i < len(start):
+            
+            if start[i] < end[j]:
+                i += 1
+                cnt += 1
+                res = max(res, cnt)
+            else:
+                j += 1
+                cnt -= 1
+            
+        return res 
+            
+            
