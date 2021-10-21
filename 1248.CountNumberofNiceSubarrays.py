@@ -15,9 +15,11 @@ class Solution(object):
         cnt = 0
         
         for i in range(len(nums)):
-            cucnt = nums[i] % 2
+            cucnt += nums[i] % 2
+            
             if cucnt - k >= 0:
                 cnt += seen.get(cucnt - k)
+            
             seen[cucnt] = seen.get(cucnt, 0) + 1
         
         return cnt
