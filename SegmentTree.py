@@ -49,4 +49,60 @@ def query(root, left, right):
     else:
         return query(root.left, left, mid) + query(root.right, mid + 1, right)
     
+
+
+"""
+implementation with another array
+"""
+
+tree = [0]*(4*len(nums))
+
+def build(nums, tree, node, start, end):
+    if start == end:
+        tree[node] = nums[start]
+        return
     
+    mid = start + (end - start) // 2
+    leftnode = 2*node + 1
+    rightnode = 2*node + 2
+    
+    build(nums, tree, leftnode, start, mid)
+    build(nums, tree, rightnode, mid + 1, end)
+    tree[node] = tree[leftnode] + tree[rightnode]
+    
+    
+def update(nums, tree, node, start, end, idx, val):
+    if start == end:
+        nums[idx] = val
+        tree[node] = val
+        return
+    
+    mid = start + (end - start) // 2
+    left = 2*node + 1
+    right = 2*node + 2
+    if idx <= mid:
+        update(nums, tree, left, start, mid, idx, val)
+    else:
+        update(nums, tree, right, mid + 1, end, idx, val)
+    
+    tree[node] = tree[left] + tree[right]
+
+def query(tree, node, start, end,  L, R):
+    if start == end:
+        return tree[node]
+    
+    if start == L and end == R:
+        return tree[node]
+    
+    mid = start + (end - start)//2
+    left = 2*node + 1
+    right = 2*node + 2
+    
+    if R <= mid:
+        return query(tree, left, start, mid, L, R)
+    elif L > mid:
+        return query(tree, right,  mid+1, end, L, R)
+    else:
+        leftsum = query(tree, left, start, mid, L, R)
+        rightsum = query(tree, right, mid+1, end, L, R)
+        return leftsum + rightsum
