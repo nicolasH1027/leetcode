@@ -87,9 +87,6 @@ class TreeNode(object):
         self.end = end
 
 class NumArray(object):
-    """
-    TLE.........s
-    """
     def __init__(self, nums):
         """
         :type nums: List[int]
@@ -155,3 +152,61 @@ class NumArray(object):
         node.val = node.left.val + node.right.val
         
         return node
+
+# ===============================================================================
+
+"""
+sqrt decomposition
+"""
+
+class NumArray(object):
+    def __init__(self, nums):
+        """
+        :type nums: List[int]
+        """
+        self.nums = nums
+        n = len(nums)
+        sqt = math.sqrt(n)
+        self.l = int(n // sqt) + 1
+        self.b = [0]*self.l
+        
+        for i, val in enumerate(nums):
+            self.b[i // self.l] += val     
+
+    def update(self, index, val):
+        """
+        :type index: int
+        :type val: int
+        :rtype: None
+        """
+        self.b[index // self.l] = self.b[index // self.l] + val - self.nums[index]
+        self.nums[index] = val        
+
+    def sumRange(self, left, right):
+        """
+        :type left: int
+        :type right: int
+        :rtype: int
+        """
+        
+        lidx = left // self.l
+        ridx = right // self.l
+        res = 0
+        if lidx == ridx:
+            for i in range(left, right + 1):
+                res += self.nums[i]
+        else:
+            for i in range(left, (lidx + 1)*self.l):
+                res += self.nums[i]
+            for i in range(lidx+1, ridx):
+                res += self.b[i]
+            for i in range(ridx*self.l, right+1):
+                res += self.nums[i]
+        return res
+            
+
+
+# Your NumArray object will be instantiated and called as such:
+# obj = NumArray(nums)
+# obj.update(index,val)
+# param_2 = obj.sumRange(left,right)
