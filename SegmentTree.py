@@ -27,9 +27,9 @@ def update(nums, root, idx, val):
     
     mid = root.start + (root.end - root.start) // 2
     if idx <= mid:
-        update(nums, root.start, mid, root.left, idx, val)
+        update(nums, root.left, idx, val)
     else:
-        update(nums, mid + 1, root.end, root.right, idx, val)
+        update(nums,root.right, idx, val)
         
     root.val = root.left.val + root.right.val
     
