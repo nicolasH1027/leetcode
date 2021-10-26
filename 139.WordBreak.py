@@ -11,7 +11,7 @@ class Solution:
             if start == len(s):
                 return True
             for tar in range(start + 1,  len(s) + 1):
-                if s[start:tar] in word and backtrack(s, word, start + 1):
+                if s[start:tar] in word and backtrack(s, word, tar):
                     return True
             return False
         
@@ -31,7 +31,7 @@ class Solution:
             if start == len(s):
                 return True
             for tar in range(start + 1,  len(s) + 1):
-                if s[start:tar] in word and backtrack(s, word, start + 1):
+                if s[start:tar] in word and backtrack(s, word, tar):
                     return True
             return False
         return backtrack(s,frozenset(wordDict), 0)

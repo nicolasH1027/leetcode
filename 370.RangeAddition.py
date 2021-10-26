@@ -30,7 +30,7 @@ class Solution(object):
         :rtype: List[int]
         """
 
-        nums = [0]*(length + 1)
+        nums = [0]*(len(arr) + 1)
         
         for start, end, val in updates:
             nums[start] += val
