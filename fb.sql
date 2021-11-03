@@ -68,15 +68,12 @@ FROM
 
 
 -- 2 question
--- % user clicked on a result about an Event
+-- what % user clicked on a result about an Event
 
 -- The question is ambiguous, if its about the percentage of user that clicked on a result about an Event over total user 
 
 SELECT
-    ROUND((SELECT
-        DISTINCT user_id
-    FROM
-        searches)/
+    ROUND(
     (
     SELECT
         COUNT(DISTINCT s2.user_id)
@@ -90,4 +87,9 @@ SELECT
         s1.clicked = TRUE
         AND
         s1.result_type = 'event'        
-    )*100, 2) AS Percentage
+    )
+    /
+    (SELECT
+        DISTINCT user_id
+    FROM
+        searches)*100, 2) AS Percentage
