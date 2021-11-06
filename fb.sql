@@ -93,3 +93,105 @@ SELECT
         DISTINCT user_id
     FROM
         searches)*100, 2) AS Percentage
+
+-- =================================================================================
+
+Welcome to Facebook!
+
+This is just a simple shared plaintext pad, with no execution capabilities.
+When you know what language you would like to use for your interview,
+simply choose it from the dropdown in the top bar.
+Enjoy your interview!
+
+table_name: friending
++-----------------+-------------+------------------------------------------+
+| column         | data_type | description |
++-----------------+-------------+------------------------------------------+
+| sender_id      | BIGINT    | Facebook Id for user sending request |
+| receiver_id    | BIGINT    | Facebook Id for user receiving request |
+| sent_date      | STRING    | Date when request was sent |
+| accepted_date  | STRING    | Date when request was accepted, NULL if not accepted |
+| sender_country | STRING    | Facebook Identifier
++---------------+---------------+------------------------------------------+
+sender_id  | receiver_id | sent_date  | accepted_date | sender_country
+1          | 2           | 2019-09-15 | 2019-09-18    | US
+1          | 3           | 2019-10-15 | 2019-10-15    | US
+2          | 3           | 2019-10-15 | NULL          | CA
+
+table_name: age
++---------------+---------------+---------------------------+
+| column    | data_type | description |
++---------------+---------------+---------------------------+
+| userid    | BIGINT    | Facebook Id for user |
+| age_group | STRING    | 'under20', '20-40', '40-60', 'over60' |
++---------------+---------------+---------------------------+
+SAMPLE ROWS:
+userid | age_group
+1234   | '20-40'
+5678   | '40-60'
+9010   | 'under20'
+
+
+Q1: What is the same day acceptance rate for every day in the last week?
+
+SELECT
+    sent_date,
+    SUM(IF(sent_date = accepted_date, 1, 0))/COUNT(*) AS rate
+FROM
+    friending
+WHERE
+    CAST(sent_date AS DATE) BETWEEN ... AND ...
+GROUP BY
+    sent_date
+
+
+Q2: What is the average number of friendship requests sent per user over the past week by age group?
+
+SELECT
+    AVG(Age20) AS Age20,
+    AVG(Age2040) AS Age2040,
+    AVG(Ageunder20) AS Ageunder20,
+    AVG(Ageover60) AS Ageover60
+FROM
+    (
+    SELECT
+        F.sender_id AS ID,
+        SUM(CASE WHEN A.age_group = '20-40' THEN 1 ELSE 0 END) AS Age20,
+        SUM(CASE WHEN A.age_group = '40-60' THEN 1 ELSE 0 END) AS Age2040,
+        SUM(CASE WHEN A.age_group = 'under20' THEN 1 ELSE 0 END) AS Ageunder20,
+        SUM(CASE WHEN A.age_group = 'over60' THEN 1 ELSE 0 END) AS Ageover60
+    FROM
+        friending AS F
+        JOIN 
+        age AS A
+        ON
+        F.sender_id = A.userid
+    WHERE
+        CAST(sent_date AS DATE) BETWEEN ... AND ...
+    GROUP BY
+        F.sender_id
+    ) AS T
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Product round:
+---------
+You are a DS on the friending team. The overall number of friend accepts on the platform has gone down by 5% in June. How would you look into this?
+---------
+We have a suggestion to add more relatives in the friend algorithm. How would you test if this is a good or a bad idea?-
