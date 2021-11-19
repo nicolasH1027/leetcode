@@ -179,6 +179,116 @@ FROM
 
 
 
+### Table 1: searches
+### columns:
+* date (string), date of the search
+* search_id (int), the unique identifier of each search
+* user_id (int), the unique identifier of the searcher
+* age_group (string), ('U30', '30-50', '50+')
+* search_query (string), the text of the search query. 1point3acres
+
+Sample Rows:
+date | search_id | user_id | age_group | search_query
+-----------------------------------------------------------------------------------------
+‘2020-01-01’  |      101      | 9991     | 'U30'   |   ‘michael jackson’
+‘2020-01-01’  |      102      | 9991     |   ‘U30’   |   ‘menlo park’
+‘2020-01-01’  |      103      | 5555     |   ’30-50’ |   ‘john’
+‘2020-01-01’  |      104      | 1234     |   ‘50+’   |   ‘funny dogs’
+
+### Table 2: search_results
+### columns:
+* date (string), date of the search action
+* search_id (int), the unique identifier of each search
+* result_id (int), the unique identifier of the result
+* result_type (string), ('page', 'event', 'group','person','post', etc.)
+* clicked (boolean), did the user click on the result?
+
+Sample Rows:
+date | search_id | result_id | result_type | clicked
+-----------------------------------------------------------------------------------------
+‘2020-01-01’ | 101 | 1001 | ‘page’   |   TRUE
+‘2020-01-01’ | 101 | 1002 | ‘event’   |   FALSE
+‘2020-01-01’ | 101 | 1003 | 'event’ |   FALSE
+‘2020-01-01’ | 101 | 1004 | ‘group' |   FALSE
+
+### Q1: by each age group, how many unique users searched for "john" in the last 7 days?
+
+SELECT
+    age_group,
+    COUNT(DISTINCT user_id)
+FROM
+    searches AS S
+WHERE
+    DATADIFF(CURDATE(), CAST(S.date AS date)) <= 7
+    AND
+    search_query = 'john'
+GROUP BY
+    age_group
+
+### Q2: what are the top 10 search terms that are most likely to return at least one result about an Event?
+
+SELECT
+    search_query
+FROM
+    (
+    SELECT
+        S1.search_query,
+        IFNULL(AVG(CASE WHEN S2.result_type = ‘event’ AND clicked = TRUE THEN 1 ELSE 0 END), 0) AS rate
+    FROM
+        searches AS S1
+        JOIN
+        search_results AS S2
+        ON
+        S1.date = S2.date
+        AND
+        S1.user_id = S2.search_id
+    GROUP BY
+        S1.search_query
+    ) AS 
+WHERE
+    rate > 0
+ORDER BY 2 DESC
+LIMIT 10
+
+
+(4) Given timestamps of logins, figure out how many people on Facebook were active all 
+seven days of a week on a mobile phone.
+SELECT
+    COUNT(*) 
+FROM
+    (
+    SELECT
+        user_id
+    FROM
+        (
+            SELECT
+            DISTINCT user_id, WEEKDAY(date) AS wd
+        FROM
+            table
+        ) AS T
+    GROUP BY
+        user_id
+    HAVING
+        COUNT(*) = 7
+    ) AS TT
+
+1. what is the session/user in the last 30 days?
+
+Table： session
+column: date| sessionid | userid | event
+
+
+SELECT
+    
+Select count( sessdionid) *1.0/count(distinct userid) as session_per_user
+from Session 
+Where datediff(now(), date) <= 30
+
+
+
+
+
+
 
 
 
