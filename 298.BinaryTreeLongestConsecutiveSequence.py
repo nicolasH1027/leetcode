@@ -41,4 +41,5 @@ class Solution:
                 path = 1
                 
             return max(path, max(helper(root.left, root, path), helper(root.right, root, path)))
-            
+        
+        return helper(root, None, 0)
