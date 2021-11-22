@@ -1,42 +1,39 @@
+import collections
 class Solution:
-
-    from collections import defaultdict, Counter, deque
 
     def alienOrder(self, words: List[str]) -> str:
         
-        indegree = collections.defaultdict(dict)
+        indegree = collections.defaultdict(int)
+        outdege = collections.defaultdict(set)
         
         for word in words:
             for letter in word:
                 indegree[letter] = 0
-                
-        outdegree = collections.defaultdict(set)
         
         for first, second in zip(words, words[1:]):
             for i, j in zip(first, second):
                 if i != j:
-                    if j not in outdegree[i]:
-                        outdegree[i].add(j)
+                    if j not in outdege[i]:
                         indegree[j] += 1
+                        outdege[i].add(j)
                     break
             else:
                 if len(second) < len(first):
                     return ""
-                
-        result = []
-        queue= deque()
+        
+        stack = []
+        
         for key in indegree.keys():
             if indegree[key] == 0:
-                queue.append(key)
-        
-        while queue:
-            cur = queue.popleft()
+                stack.append(key)
+        result = []
+        while stack:
+            cur = stack.pop()
             result.append(cur)
-            for tar in outdegree[cur]:
-                indegree[tar] -= 1
-                if indegree[tar] == 0:
-                    queue.append(tar)
-            # del outdegree[cur]
+            
+            for target in outdege[cur]:
+                indegree[target] -= 1
+                if indegree[target] == 0:
+                    stack.append(target)
         
         return "".join(result) if len(result) == len(indegree) else ""
-                    
