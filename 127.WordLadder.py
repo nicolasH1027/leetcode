@@ -1,3 +1,6 @@
+import collections
+
+
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         """
@@ -46,3 +49,51 @@ class Solution:
                         queue.append((word, level + 1))
                 all_combo_dict[intermediate_word] = []
         return 0
+    
+    
+
+class Solution(object):
+    def ladderLength(self, beginWord, endWord, wordList):
+        """
+        :type beginWord: str
+        :type endWord: str
+        :type wordList: List[str]
+        :rtype: int
+        """
+        
+        def bfs(queue, visted, other_visited):
+            word, level = queue.popleft()
+            for i in range(L):
+                intermediate = word[:i] + '*' + word[i+1:]
+                for target in dic[intermediate]:
+                    if target in other_visited:
+                        return level + other_visited[target]
+                    if target in visted: continue
+                    visted[target] = level + 1
+                    queue.append((target, level + 1))
+            return None
+        
+        L = len(beginWord)
+        dic = collections.defaultdict(list)
+        for word in wordList:
+            for i in range(L):
+                dic[word[:i] + '*' + word[i+1:]].append(word)
+                
+        begin_visted = {beginWord:1}
+        end_visited = {endWord:1}
+        
+        begin_queue = collections.deque([(beginWord, 1)])
+        end_queue = collections.deque([(endWord, 1)])
+        
+        while begin_queue and end_queue:
+            
+            ans = bfs(begin_queue, begin_visted, end_visited)
+            if ans:
+                return ans
+            
+            ans = bfs(end_queue, end_visited, begin_visted)
+            if ans:
+                return ans
+        
+        return 0
+            
