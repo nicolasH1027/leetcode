@@ -26,7 +26,7 @@ class Solution:
                 d = s2[left]
                 
                 if d in need:
-                    if window.get(d, 0) == need[d]:
+                    if window[d] == need[d]:
                         valid -= 1
                     window[d] -= 1
                 left += 1
