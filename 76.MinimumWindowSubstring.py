@@ -19,6 +19,8 @@ class Solution:
                 window[c] = window.get(c, 0) + 1
                 if window[c] == need[c]:
                     valid += 1
+            else:
+                continue
             
             while valid == len(need):
                 if right - left < size:
