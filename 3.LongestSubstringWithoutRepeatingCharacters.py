@@ -49,3 +49,34 @@ class Solution:
             seen[s[hi]] = hi
             
         return ans
+    
+
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        
+        window = {}
+        
+        left, right, n = 0, 0, len(s)
+        ans = 0
+        
+        while right < n:
+            
+            c = s[right]
+            right += 1
+            window[c] = window.get(c, 0) + 1
+            
+            while window.get(c, 0) > 1:
+                d = s[left]
+                window[d] -= 1
+                
+                left += 1
+            
+            ans = max(ans, right - left)
+        
+        return ans
+        
+        
