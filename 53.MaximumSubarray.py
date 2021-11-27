@@ -18,19 +18,13 @@ class Solution:
         mid = low + (high - low) // 2
         
         leftlargest = self.maxsubarray(nums, low, mid)
-        print(leftlargest)
         rightlargest = self.maxsubarray(nums, mid+1, high)
-        print(rightlargest)
         midlargest = self.maxcross(nums, low, high, mid)
-        print(f"the cross sum is {midlargest}")
         
-        
-        if leftlargest[2] >= rightlargest[2] and \
-        leftlargest[2]>= midlargest[2]:
+        if leftlargest[2] >= rightlargest[2] and leftlargest[2]>= midlargest[2]:
             return leftlargest
         
-        elif rightlargest[2] >= leftlargest[2] and \
-        rightlargest[2] >= midlargest[2]:
+        elif rightlargest[2] >= leftlargest[2] and rightlargest[2] >= midlargest[2]:
             return rightlargest
         
         else:
@@ -59,3 +53,16 @@ class Solution:
 
         
         return (lpt, rpt, leftsum + rightsum)
+    
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        
+        max_sum = -float('inf')
+        cur_sum = 0
+        
+        for num in nums:
+            cur_sum = max(cur_sum + num,  num)
+            max_sum = max(cur_sum, max_sum)
+            
+        return max_sum
