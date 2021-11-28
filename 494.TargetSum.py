@@ -20,3 +20,73 @@ class Solution:
     
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        "DP solution"
+        
+        
+        if sum(nums) < abs(target) or (target + sum(nums)) % 2 == 1:
+            return 0
+        
+        m, n = len(nums),  (target + sum(nums)) // 2
+        
+        dp = [[0]*(n + 1) for _ in range(m + 1)]
+        
+        for i in range(m+1):
+            dp[i][0] = 1
+            
+        
+        for i in range(1, m + 1):
+            for j in range(n + 1):
+                if j >= nums[i-1]:
+                    dp[i][j] = dp[i-1][j] + dp[i-1][j - nums[i-1]]
+                else:
+                    dp[i][j] = dp[i-1][j]
+                    
+        return dp[m][n]
+    
+class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        "DP solution"
+        
+        
+        if sum(nums) < abs(target) or (target + sum(nums)) % 2 == 1:
+            return 0
+        
+        m, n = len(nums),  (target + sum(nums)) // 2
+        
+        dp = [[0]*(n + 1) for _ in range(m + 1)]
+        
+        for i in range(m+1):
+            dp[i][0] = 1
+            
+        
+        for i in range(1, m + 1):
+            for j in range(n + 1):
+                if j >= nums[i-1]:
+                    dp[i][j] = dp[i-1][j] + dp[i-1][j - nums[i-1]]
+                else:
+                    dp[i][j] = dp[i-1][j]
+                    
+        return dp[m][n]
+    
+
+class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        "DP solution"
+        
+        
+        if sum(nums) < abs(target) or (target + sum(nums)) % 2 == 1:
+            return 0
+        
+        m, n = len(nums),  (target + sum(nums)) // 2
+        
+        dp = [0]*(n + 1)
+        dp[0] = 1
+
+        for i in range(1, m + 1):
+            for j in range(n, -1, -1):
+                if j >= nums[i-1]:
+                    dp[j] = dp[j] + dp[j - nums[i-1]]
+                else:
+                    dp[j] = dp[j]
+                    
+        return dp[n]
