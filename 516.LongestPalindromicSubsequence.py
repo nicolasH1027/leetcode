@@ -47,5 +47,3 @@ class Solution:
                 pre = tmp
         
         return dp[n-1]
-            
-             
