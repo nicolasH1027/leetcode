@@ -12,7 +12,7 @@ class Solution:
     def quickselect(self, data, p, r, k):
         if p == r:
             return p
-        pivot = random.randrange(p,r+1)
+        pivot = random.randint(p,r)
         tmp = self.partition(data, p, r, pivot)
 
         if tmp == k - 1: return tmp

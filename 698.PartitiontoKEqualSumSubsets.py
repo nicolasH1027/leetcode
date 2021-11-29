@@ -8,7 +8,7 @@ class Solution:
         freq = [1]*len(nums)
         nums.sort(reverse = True)
         
-        @lru_cache
+        @lru_cache(maxsize = None)
         def backtrack(ind, part, cnt):
 
             if cnt == k-1:
