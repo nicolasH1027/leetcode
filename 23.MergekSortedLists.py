@@ -47,7 +47,38 @@ class Solution:
         
         return dummy.next
         
-
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        
+        
+        def __lt__(self, other):
+            
+            return self.val < other.val
+        ListNode.__lt__ = __lt__
+        
+        
+        dummy = cur = ListNode()
+        
+        heap = []
+        
+        for l in lists:
+            if l:
+                heapq.heappush(heap, (l.val, l))
+        
+        while heap:
+            
+            val, node = heapq.heappop(heap)
+            cur.next = ListNode(val)
+            cur = cur.next
+            if node.next:
+                heapq.heappush(heap, (node.next.val, node.next))
+        
+        return dummy.next
         # amount = len(lists)
         # interval = 1
         # while interval < amount:
