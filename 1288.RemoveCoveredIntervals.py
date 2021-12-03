@@ -3,17 +3,15 @@ class Solution:
         
         intervals.sort(key = lambda x: (x[0], -x[1]))
         
-        left, right, i = intervals[0][0], intervals[0][1], 0
+        right, i = 0, 0
         
         ans = 0
         
-        for start, end in intervals:
+        for _, end in intervals:
             
             if end <= right:
                 ans += 1
             else:
-                left = start
                 right = end
         
         return len(intervals) - ans
-            
