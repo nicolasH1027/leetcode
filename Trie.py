@@ -51,17 +51,17 @@ class Trie:
         """
         the function will remove word regardless how many times it appear.
         """
-        def helper(node, word, level):
-            if level == len(word):
-                return len(node.child) == 0
-            if word[level] not in node.child:
-                return False
+        # def helper(node, word, level):
+        #     if level == len(word):
+        #         return len(node.child) == 0
+        #     if word[level] not in node.child:
+        #         return False
             
-            if helper(node[word[level]], word, level + 1):
-                node.child.pop(word[level])
-                return len(node.children) == 0 and node.count == 0
-            return False
-        helper(word)
+        #     if helper(node[word[level]], word, level + 1):
+        #         node.child.pop(word[level])
+        #         return len(node.children) == 0 and node.count == 0
+        #     return False
+        # helper(word, word, 0)
 
       
             

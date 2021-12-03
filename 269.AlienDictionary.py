@@ -37,3 +37,4 @@ class Solution:
                     stack.append(target)
         
         return "".join(result) if len(result) == len(indegree) else ""
+    

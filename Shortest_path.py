@@ -59,7 +59,7 @@ def ImporvedBellmanFord(edges, vi, n):                      # edge list
 
     # the algorithm can be improved to loop at most n - 1 times by comparing old and new distance in each iteration, if it's 0, then break
     for _ in range(n - 1):    
-        flag = False # to exist the loop early
+        flag = False # to exit the loop early
         for weight, source, target in edges:
             if weight + dist[source] < dist[target]:
                 flag = True
@@ -137,6 +137,18 @@ def PrintPath(Successor, u, v):
     
     
     
+# def OriginalBellmanFord(edges, vi, n):   
+#     dp = [[float('inf')]*n for _ in range(k+1)]
+#     predecessor = [None]*n
+    
+#     for i in range(k+1):
+#         dp[i][0] = 0
+    
+#     for i in range(k+1):
+#         for weight, src, tar in edges:
+#             if dp[i-1][src] + weight < dp[i][tar]:
+#                 predecessor[tar] = src
+#                 dp[i][tar] = dp[i-1][src] + weight
     
     
     
