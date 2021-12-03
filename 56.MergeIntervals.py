@@ -12,8 +12,4 @@ class Solution:
                 
             else:
                 result[-1][1] = max(result[-1][1], item[1])
-        return result    
-        
-    
-    
-    
+        return result
