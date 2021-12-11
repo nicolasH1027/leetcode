@@ -31,7 +31,35 @@ class Solution:
         
         lpt.next = newhead
         rev_tail.next = tmp
-        return dummy.next        
+        return dummy.next 
+    
+class Solution:
+    "recursion"
+    
+    def __init__(self) -> None:
+        
+        self.successor = None
+    
+    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        if left == 1:
+            return self.reverse(head, right)
+        
+        head.next = self.reverseBetween(head.next, left - 1, right)
+        
+        return head
+
+    
+    def reverse(self, head, n):
+        if n == 1:
+            self.successor = head.next
+            return head
+        
+        last = reverse(head.next, n - 1)
+        
+        head.next.next = head
+        head.next = self.successor
+        
+        return last    
 
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
