@@ -37,36 +37,40 @@ class Solution:
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         "KMP"
+        def serialize(root):
+            if not root:
+                return '#'
+            
+            return ',' + str(root) + ',' + serialize(root.left) + ',' + serialize(root.right)
         
+        def getnext(s):
+            m = len(s)
+            next_ind = [0]*m
+            k = 0
+            for i in range(1, m):
+                while k > 0 and s[k] != s[i]:
+                    k = next_ind[k-1]
+
+                if s[k] == s[i]:
+                    k += 1
+
+            next_ind[i] = k
         
-def getnext(s):
-    m = len(s)
-    next_ind = [0]*m
-    k = 0
-    for i in range(1, m):
-        while k > 0 and s[k] != s[i]:
-            k = next_ind[k-1]
+            return next_ind
+        
+        def kmp(s, t):
+            n, m = len(s), len(t)
+            next_ind = [0, 0, 0, 0, 4, 0]
+            q = 0
 
-        if s[k] == s[i]:
-            k += 1
+            for i in range(n):
+                while q > 0 and t[q] != s[i]:
+                    q = next_ind[q-1]
 
-    next_ind[i] = k
-  
-    return next_ind
-  
-def kmp(s, t):
-    n, m = len(s), len(t)
-    next_ind = [0, 0, 0, 0, 4, 0]
-    q = 0
+                if t[q] == s[i]:
+                    q += 1
 
-    for i in range(n):
-        while q > 0 and t[q] != s[i]:
-            q = next_ind[q-1]
-
-        if t[q] == s[i]:
-            q += 1
-
-        if q == m:
-            print('found')
-            print(i - m + 1)
-            q = next_ind[q-1]
+                if q == m:
+                    print('found')
+                    print(i - m + 1)
+                    q = next_ind[q-1]
