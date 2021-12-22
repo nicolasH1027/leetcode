@@ -9,7 +9,7 @@ def getnext(s):
         if s[k] == s[i]:
             k += 1
 
-    next_ind[i] = k
+        next_ind[i] = k
 
     return next_ind
 
