@@ -15,7 +15,7 @@ def getnext(s):
 
 def kmp(s, t):
     n, m = len(s), len(t)
-    next_ind = [0, 0, 0, 0, 4, 0]
+    next_ind = getnext(t)
     q = 0
 
     for i in range(n):
