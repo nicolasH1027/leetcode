@@ -1,36 +1,37 @@
 class Solution:
     def calculate(self, s: str) -> int:
         stack = []
-        sign = 1
+        ans = 0
         operand = 0
-        res = 0
-        for ch in s:
-            if ch.isdigit():
-                operand = operand*10 + int(ch)
+        sign = 1
+        
+        
+        for c in s:
             
-            elif ch == "+":
-                res += operand*sign
+            if c.isdigit():
+                operand = 10*operand + int(c)
+            
+            if c == '+':
+                ans += operand*sign
                 sign = 1
                 operand = 0
             
-            elif ch == "-":
-                res += operand*sign
+            if c == '-':
+                ans += operand*sign
                 sign = -1
                 operand = 0
             
-            elif ch == "(":
-                stack.append(res)
+            if c == '(':
+                stack.append(ans)
                 stack.append(sign)
-                res = 0
                 sign = 1
+                ans = 0
             
-            elif ch == ")":
-                res += sign * operand
-                
-                res *= stack.pop()
-                
-                res += stack.pop()
-                
+            if c == ')':
+                ans += sign*operand
+                ans *= stack.pop()
+                ans += stack.pop()
                 sign = 1
                 operand = 0
-        return res + sign*operand
+        
+        return ans + sign*operand
