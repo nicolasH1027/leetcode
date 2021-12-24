@@ -4,7 +4,7 @@ class Solution:
         m, n, ans = len(s1), len(s2), (float('inf'), 0, 0)
         
         
-        "dp[i][j] is defined as the start index that the first i eles in s1 containing first j eles in s2"
+        "dp[i][j] is defined as the start index that the first i elements in s1 containing first j eles in s2"
         dp = [[-1]*(n+1) for _ in range(m+1)]
         
         """
