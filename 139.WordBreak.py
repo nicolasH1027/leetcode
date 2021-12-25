@@ -76,4 +76,40 @@ class Solution:
                     dp[i] = True
                     break
         return dp[len(s)]
+
+
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        """
+        max(n^2, M), M is the number of all the letter in word dict
+        """
+        Trie, max_len, END, n = {}, 0, 'END', len(s)
+
+        for word in wordDict:
+            max_len = max(max_len, len(word))
+            node = Trie
+            for letter in word:
+                node = node.setdefault(letter, {})
+            node[END] = END
+        
+        dp = [0]*(n+1)
+        dp[0] = 1
+        
+        for i in range(n+1):
+            if dp[i]:
+                root = Trie
+                for j in range(i, n):
+                    c = s[j]
+                    if j - i + 1 > max_len or c not in root:
+                        break
+                    root = root[c]
+                    if END in root:
+                        dp[j] = 1
+        
+        return dp[n]
+                
+        
+        
+        
+            
         
