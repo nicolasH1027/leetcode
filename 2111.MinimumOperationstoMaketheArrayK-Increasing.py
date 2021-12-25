@@ -16,7 +16,10 @@ class Solution:
             while pt < n:
                 
                 sub_len += 1
-                
+                """
+                和300题不同的是，这里得用right， 因为每次得把element
+                加入到sub_arr的右侧，而300题则是左侧
+                """
                 pos = bisect.bisect_right(sub_arr, arr[pt])
                 
                 if pos == len(sub_arr):
