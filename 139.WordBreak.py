@@ -104,7 +104,7 @@ class Solution:
                         break
                     root = root[c]
                     if END in root:
-                        dp[j] = 1
+                        dp[j+1] = 1
         
         return dp[n]
                 
