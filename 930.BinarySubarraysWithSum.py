@@ -13,7 +13,7 @@ class Solution(object):
         cnt = 0
         
         for i in range(len(nums)):
-            cucnt += nums[i] % 2
+            cucnt += nums[i]
             
             if cucnt - goal >= 0:
                 cnt += seen.get(cucnt - goal,0)
