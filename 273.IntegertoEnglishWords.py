@@ -1,9 +1,4 @@
 class Solution:
-    def numberToWords(self, num: int) -> str:
-
-
-
-class Solution:
     def numberToWords(self, num):
         """
         :type num: int
