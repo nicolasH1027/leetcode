@@ -53,7 +53,7 @@ def partition(data, l, r, pivot):
     data[pivot], data[r] = data[r], data[pivot]
     x, j = data[r], l-1
     
-    for i in range(len(data)):
+    for i in range(l, r):
         if data[i] <= x:
             j += 1
             data[j], data[i] = data[i], data[j]
