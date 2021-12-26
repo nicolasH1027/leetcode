@@ -1,3 +1,8 @@
+"""
+Generally, for BFS, we should mark a node when it is enqueued, not when we visit it.
+"""
+
+
 # 1. 給定一堆blacklist字串List<String>
 # 舉例
 # [ "machine guns", "terrorist activity", "muder"]
