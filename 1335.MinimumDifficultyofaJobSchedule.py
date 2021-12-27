@@ -74,7 +74,7 @@ class Solution:
         time: nd
         space: n
         
-        太难解释了。。。
+        不会
         """
         
         
