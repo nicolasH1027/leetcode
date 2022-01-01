@@ -555,28 +555,49 @@ class Solution:
             if indegree[key] == 0:
                 stack.append(key)
         
-        track = set()
-        perm = []
+        n = len(indegree)
+        candidate = [key for key in indegree.keys()]
+        seen = set
         ans = []
-
-        
-        def backtracking(stack, track, node):
-            
-            if len(track) == len(indegree):
-                ans.append(''.join(perm[:]))
+        def backtracking(order):
+            if len(order) == n:
+                ans.append(order)
                 return
-                
-            for key in stack:
-                    if key in track: continue
-                    track.add(key)
-                    perm.append(key)
-                    backtracking(stack + list(outdege[key]), track, outdege[key])
-                    perm.pop()
-                    track.remove(key)
             
-        backtracking(stack, track, [])
+            for c in candidate:
+                if c in seen: continue
+                if indegree[c] != 0: continue
+                seen.add(c)
+                for tar in outdege[c]:
+                    indegree[tar] -= 1
+                backtracking(order + c)
+                for tar in outdege[c]:
+                    indegree[tar] += 1
+                seen.remove(c)
         
         return ans
+        # track = set()
+        # perm = []
+        # ans = []
+
+        
+        # def backtracking(stack, track, node):
+            
+        #     if len(track) == len(indegree):
+        #         ans.append(''.join(perm[:]))
+        #         return
+                
+        #     for key in stack:
+        #             if key in track: continue
+        #             track.add(key)
+        #             perm.append(key)
+        #             backtracking(stack + list(outdege[key]), track, outdege[key])
+        #             perm.pop()
+        #             track.remove(key)
+            
+        # backtracking(stack, track, [])
+        
+        # return ans
 
 # just find the number
 
