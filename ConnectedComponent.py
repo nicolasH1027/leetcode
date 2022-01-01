@@ -47,6 +47,7 @@ Kosaraju algorithm
 "https://redspider110.github.io/2018/08/22/0092-algorithms-topological-sorting/"
 "https://www.programiz.com/dsa/strongly-connected-components"
 
+"和拓扑排序非常类似， 具体理解可能得参考上述几个链接"
 
 graph = collections.defaultdict(list) # hold the edge list
 vertes = [] # hold all the vertex in graph
