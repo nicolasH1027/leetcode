@@ -70,7 +70,42 @@ class Solution:
             result.append([i, j])
         return result
     
-"how to find the Articulation Points ?"
+
                 
+class Solution:
+    def criticalConnections(self, n: int, connections: List[List[int]]) -> List[List[int]]:
+        
+        graph = collections.defaultdict(list)
+        
+        for src, tar in connections:
+            graph[src].append(tar)
+            graph[tar].append(src)
+        
+        self.idx, self.low = [0]*n, [0]*n
+        ans, self.step = [], 1
+        
+        def Tarjan(cur, parent):
+            
+            self.idx[cur] = self.low[cur] = self.step
+            self.step += 1
+            
+            for nxt in graph[cur]:
                 
+                if nxt == parent: continue
                 
+                if not self.idx[nxt]:
+                    Tarjan(nxt, cur)
+                    self.low[cur] = min(self.low[cur], self.low[nxt])
+                
+                    if self.low[nxt] > self.idx[cur]:
+                        ans.append([cur, nxt])
+            
+                elif self.idx[nxt]:
+                    self.low[cur] = min(self.low[cur], self.idx[nxt])
+        
+        Tarjan(0, -1)
+        
+        return ans
+                
+        
+        
