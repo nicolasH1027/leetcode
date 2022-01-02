@@ -47,7 +47,15 @@ Kosaraju algorithm
 "https://redspider110.github.io/2018/08/22/0092-algorithms-topological-sorting/"
 "https://www.programiz.com/dsa/strongly-connected-components"
 
-"和拓扑排序非常类似， 具体理解可能得参考上述几个链接"
+"""
+和拓扑排序非常类似， 具体理解可能得参考上述几个链接
+
+
+简单来说， 假设有若干个强连通分量， 那么， 通过逆后序的顺序去遍历node，
+没有outgoing edge（这里outgoing edge 意思是从一个强联通分量到另外一个强连通分量的边）的
+强联通分量里面，至少有一个node，会排在其它强连通分量前面（排在前面指，dfs遍历的顺序）。这样，
+就确保了最后结果的正确性。
+"""
 
 graph = collections.defaultdict(list) # hold the edge list
 vertes = [] # hold all the vertex in graph
