@@ -437,7 +437,7 @@ def shortestpath(grid, si, sj, ei, ej, k):
     
     m, n = len(grid), len(grid[0])
     
-    queue = collections.deque()
+    queue = collectgions.deque()
     
     queue.append((si, sj, k))
     depth = 0
@@ -641,6 +641,9 @@ class Solution:
                 res += dfs(child)
             
             return res + 1
+        # apply dfs on indegree that has 0 indegree
+        # then use the formula    n!/(n1!n2!n3!...) 
+        
         
 # 扫雷 
 
@@ -650,6 +653,8 @@ ncol = 50
 mine = [[0]*nrow for _ in range(ncol)]
 Nmine = 10
 num=0
+
+# naive initialization 
 while num < Nmine:
     while True:
         i = random.randint(0, nrow - 1)
@@ -657,8 +662,9 @@ while num < Nmine:
         if mine[i][j] != -1:
             mine[i][j] = -1
             break
+    num += 1
 
-
+# optimized initialization
 for i in raneg(Nmine):
     x = i // nrow
     y = i % ncol
