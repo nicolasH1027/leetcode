@@ -3,6 +3,11 @@ class Solution:
         
         heap, cnt = [], collections.Counter(s)
         
+        maxf = max(cnt.values())
+        
+        if (maxf - 1) * k + cnt.values().count(maxf) > len(s):
+            return ""
+        
         for key, count in cnt.items():
             heapq.heappush(heap, (-count, key))
 
