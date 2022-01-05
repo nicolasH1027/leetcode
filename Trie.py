@@ -81,7 +81,7 @@ class Trie:
     
     
     
-end = 'end'
+# end = 'end'
 
 tire = {}
 
@@ -89,11 +89,11 @@ for word in words:
     node = tire
     for letter in word:
         node = node.setdefault(letter, {})
-    node[end] = end
+    node['###'] = word
     
 node = tire
 for letter in prefix:
     if letter not in node:
         return False
     node = tire[letter]
-return end in node
+return '###' in node
