@@ -39,6 +39,13 @@ class Solution:
         n = len(s)
         dp = [[True]*n for _ in range(n)]
         
+        """
+        注意这里的loop的顺序，i得从后面往前
+        这样的话，配合内循环，就是不断的从 i, j到
+        i-1, j+1扩张。
+        如果i从前往后，那么内部子串没有计算就得计算外部
+        子串，答案就是错的
+        """
         for i in range(n -1, -1, -1):
             for j in range(i+1, n):
                 dp[i][j] = s[i] == s[j] and dp[i+1][j-1]
