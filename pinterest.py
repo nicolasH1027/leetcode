@@ -42,10 +42,10 @@ for ind in range(len(sentence)):
             if ind == len(sentence) - 1 or sentence[ind+1] == ' ' or sentence[ind+1] == '.':
             # if ind == len(sentence) - 1 or not sentence[ind+1].isalpha():
                 return True
-            elif sentence[ind+1] in node:
-              continue
-            else:
-              node = trie
+        elif sentence[ind+1] in node:
+            continue
+        else:
+            node = trie
 print(False) 
 
 
