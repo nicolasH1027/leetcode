@@ -1,7 +1,7 @@
 class Solution:
     def minSwaps(self, data: List[int]) -> int:
         
-        n, one = len(n), sum(data)
+        n, one = len(data), sum(data)
         MoveSum = sum(data[:one])
         ans = MoveSum
         
