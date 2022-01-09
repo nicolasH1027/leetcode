@@ -42,7 +42,7 @@ class Solution:
         nums = [0] + arr + [0]
         stack = []
         
-        for i, val in enumerate(arr):
+        for i, val in enumerate(nums):
             
             while stack and nums[stack[-1]] > val:
                 j = stack.pop()
