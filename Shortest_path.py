@@ -17,7 +17,7 @@ def Dijkstra(Edges, vi):
     heapq.heappush(heap, (0, vi))
     parent = list(range(n))
     seen = set()
-    seen.add(vi)
+    # seen.add(vi)
     distance = [float(inf)]*n
     distance[vi] = 0
     
@@ -32,6 +32,11 @@ def Dijkstra(Edges, vi):
                     parent[neighbor] = node
                     heapq.heappush(heap, (w + weight, neighbor))
     return distance
+
+
+
+
+
 
 def OriginalBellmanFord(edges, vi, n):                      # edge list
     dist = [float(inf) for i in range(n)]
