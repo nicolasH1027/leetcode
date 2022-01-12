@@ -1,0 +1,183 @@
+Customer Obsession
+    
+Meeting Customer's need firstly!
+
+Tutorial,  questionare after class, made video, made more plots.
+
+walk through the example step by step one black board. (Recursion)
+
+
+
+Ownership
+
+We dont need to be told to do something, we jump to do it. Because we 
+believe that we are part of it.
+
+Do for the team,  code for downloading the dna data, code for dynamic community detection
+
+Notion of leetcode solution, ask all of teammenbers to revise the code to make it most
+
+easy to understand
+
+
+Invent and Simplify
+
+wright a python code for girlfriend to keep track of the lowest price.
+
+Do for the team,  code for downloading the dna data, code for dynamic community detection 
+
+Ownership 和 Invent and Simplify 最重要的就是不要被动听指令，而是要主动地去解决问题
+
+Notion of leetcode solution, ask all of teammenbers to revise the code to make it most
+
+easy to understand
+
+accept to be misunderstood by a long periods of time
+
+
+
+Are Right, A Lot
+
+Firstly, listen to others as much as possible, get more ideas from different perspectives.
+
+GNN. Professor thinks its lacking of enough theoretical support
+
+
+
+
+
+
+Learn and Be Curious
+
+Because the customer and the technology are changing all the time, so we need to learn and be updated
+all the time
+
+1. Telsa 
+Bought the put option, i thought there was no big difference between 
+Tesla and Audi, Benz, so it should't have that high value.
+
+Should never done with learning,   Dive Deep. 
+
+learn from mistake
+
+
+Hire and Develop the Best
+
+invest on the future.
+
+
+
+Insist on the Highest Standards
+
+(Leaders focus on the key inputs for their 
+business and deliver them with the right 
+quality and in a timely fashion. Despite 
+setbacks, they rise to the occasion and 
+never settle.)
+
+We should also say about how we should focus on the input
+
+Leaders ensure that 
+defects do not get sent down the line and 
+that problems are fixed so they stay fixed.
+
+
+Mindset
+
+Dnn solver.  Dimension brocast, so after that, each line of the sentence,
+
+I wrigh down the dimension information, so that others can know what they are dealing 
+
+with.
+
+发现问题，主动提出，即便不是你的工作
+
+discuss with professor that some of the question is too hard, and which part should be put
+more attention
+
+
+
+Think Big
+
+
+Learning Java and frontend and backend knowledge. Also, I'm reviewing some knowledge
+
+like behavior economics.
+
+
+替顾客想到还没发生但是可能发生的问题。  
+
+例如，dna的项目， 因为老师是一个随性的人，所以，在和他聊过几次之后，我就顺着他的思路，
+即便他没有要求，但是我也把不同的setting下的结果跑出来。并且把不同的代码都写出来，让团队
+的其它人都能看懂
+
+包括dynamic community detection 的项目也是，把结果写成了一个包。
+
+
+
+Bias for Action
+
+立刻马上行动，但是不能牺牲质量，可以接受一定的失误，这就要求需要一定的 are right a lot.
+
+例子， 找工作，，刷题， 6点起床，刷到9点， 讨论论文到11点， 吃饭休息一小时，然后刷题到2点
+，然后写论文到5点，然后晚上刷题到12点。
+
+
+
+
+Frugality
+
+time limited,  spend time on those thing that are usefull.
+
+looking for jobs and do research. not conflict.
+
+DNa project computation, limited by the gpu, so 
+invent the divide conquer technique to split the data into several part.
+
+
+
+
+Earn Trust
+
+
+Have Backbone; Disagree and Commit
+
+From chaso to agreement. Disagreement is a way to make progress of the entire team.
+Once we reach an agreement, we commit it!
+Bring solidarity to the whole team
+
+
+
+
+
+
+Deliver Results
+
+Teaching,  what's input and output?  simply the scores they get, however, it's not enough.
+
+do they show more interest on what they learn from the class is much more important.
+
+Focus on inputs
+
+Help us identify what we should focus on.
+
+From the data to output that satisfy customers
+
+
+
+
+
+
+Strive to be Earth’s Best Employer
+
+
+
+
+
+
+
+
+
+
+
+Success and Scale Bring Broad Responsibility
