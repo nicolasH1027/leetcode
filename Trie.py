@@ -90,7 +90,7 @@ for word in words:
     for letter in word:
         node = node.setdefault(letter, {})
     node['###'] = word
-    
+
 node = tire
 for letter in prefix:
     if letter not in node:
