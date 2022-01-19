@@ -52,7 +52,11 @@ class Solution:
         cnt = 0
         
         while head:
-            
+            """
+            here, we cant use while head and head.next, cause if the nums
+            contains all the value of linked list, then the output would be 
+            0, however, the correct result should be 1
+            """
             if head in nodes and (head.next is None or head.next not in nodes):
                 cnt += 1
                 
