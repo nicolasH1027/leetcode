@@ -8,7 +8,7 @@ class Solution:
         def valid(K):
             return sum(math.ceil(p/K) for p in piles) <= h
         
-        lo, hi = 1, max(piles) + 1
+        lo, hi = 1, max(piles)
         
         while lo < hi:
             
