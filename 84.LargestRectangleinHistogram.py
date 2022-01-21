@@ -8,9 +8,9 @@ class Solution:
         max_area = 0
         
         for i in range(n):
-            while stack and heights[stack[-1]] > heights[i]:
+            while heights[stack[-1]] > heights[i]:
                 cur = stack.pop()
-                start = stack[-1] if stack else -1
+                start = stack[-1]
                 max_area = max(max_area, heights[cur] * (i - start - 1))
             stack.append(i)
             
