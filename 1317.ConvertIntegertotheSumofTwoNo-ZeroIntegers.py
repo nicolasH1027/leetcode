@@ -3,8 +3,8 @@ class Solution:
         
         a = 1
         
-        while '0' in f'{a}{n-1}':
+        while '0' in f'{a}{n-a}':
             
             a += 1
             
-        return [a, n-1]
+        return [a, n-a]
