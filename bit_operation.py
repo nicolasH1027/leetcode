@@ -20,15 +20,17 @@ binary addition
 
 we use the & and << to get the carry
 
+only works for positive number
 add(a, b)
 
-while a:
+while b:
 
-    carry = a & b
-    b = a ^ b
-    a = carry
+    addition = a ^ b
+    carry = (a & b) << 1
+    
+    a, b = addition, carry
 
-return b
+return a
 
 
 ~a == -a - 1
