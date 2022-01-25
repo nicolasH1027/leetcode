@@ -199,41 +199,20 @@ class Solution:
         
         left, right = max(nums), sum(nums) + 1
         
-        while left < right:
-            
-            mid, cur, cnt = left + (right-left)//2, 0, 1
-            
+        while left < right:    
+            mid, cur, cnt = left + (right-left)//2, 0, 1       
             for n in nums:
                 cur += n
                 if cur > mid:
                     cnt += 1    
                     cur = n
-            
             if cnt > m:
                 
                 left = mid + 1    
             else:
                 
                 right = mid
-        
         return left
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
