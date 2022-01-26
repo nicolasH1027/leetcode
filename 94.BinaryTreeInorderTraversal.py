@@ -34,6 +34,7 @@ class Solution:
         result = []
         cur = root
         while stack or cur:
+            
             if cur:
                 stack.append(cur)
                 cur = cur.left
